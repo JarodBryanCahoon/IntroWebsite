@@ -1,5 +1,7 @@
 .top{
     text-align: center;
+    color: white;
+    text-shadow: 1px 1px 4px black;
 }
 
 .noBullet{
@@ -17,26 +19,43 @@ html{
             rgba(0, 0, 0, 0.5),
             rgba(0, 0, 0, 0.5)
     ), url("jellyfish-918694_1920.jpg");
+    background-attachment: scroll;
+}
+
+h1{
+    color: white;
+    text-shadow: 1px 1px 4px black;
 }
 
 li{
     color: white;
+    text-shadow: 1px 1px 4px black;
+    margin: 10px;
 }
 
 body{
-    margin: 0;
-    padding: 0;
+    margin: 2%;
+    padding: 1%;
     background: rgba(175, 114, 139,.5);
+    font-family: 'Ubuntu';
+}
+
+p{
+    color: white;
+    text-shadow: 1px 1px 4px black;
 }
 
 image{
     border: black;
 }
 
+
 a{
-    text-decoration: none;
+    text-decoration:black;
+    text-shadow: none;
 }
 
 a:visited{
-    text-decoration: slateblue;
+    text-decoration: maroon;
+    text-shadow: none;
 }
