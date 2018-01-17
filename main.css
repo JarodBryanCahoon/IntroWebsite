@@ -1,0 +1,55 @@
+body{
+    padding: 1%;
+    margin: 2%;
+    background: rgba(88, 146, 239, .45);
+}
+
+footer{
+    text-align: center;
+}
+
+html{
+    background: url("texturedBackground.jpg") fixed;
+}
+
+li{
+    color: white;
+}
+
+.answer {
+    list-style-type: none;
+    text-indent: 30px;
+}
+
+.question{
+    list-style-type: square;
+}
+
+.top{
+    text-align: center;
+    color: white;
+    text-shadow: 1px 1px 4px black;
+}
+
+a{
+    color: white;
+    text-shadow: 1px 1px 4px black;
+}
+
+#lastList{
+    display: inline;
+    list-style-type: none;
+    text-shadow: 1px 1px 4px black;
+}
+
+
+#questionaire{
+    list-style-type: none;
+    text-shadow: 1px 1px 4px black;
+}
+
+#questionprompt{
+    list-style-type: none;
+    color: slategray;
+    text-shadow: 1px 1px 4px black;
+}
