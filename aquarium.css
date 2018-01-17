@@ -1,0 +1,42 @@
+.top{
+    text-align: center;
+}
+
+.noBullet{
+    list-style-type: none;
+}
+
+.footer{
+    list-style-type: none;
+    display: inline-block;
+    text-align: center;
+}
+
+html{
+    background-image: linear-gradient(
+            rgba(0, 0, 0, 0.5),
+            rgba(0, 0, 0, 0.5)
+    ), url("jellyfish-918694_1920.jpg");
+}
+
+li{
+    color: white;
+}
+
+body{
+    margin: 0;
+    padding: 0;
+    background: rgba(175, 114, 139,.5);
+}
+
+image{
+    border: black;
+}
+
+a{
+    text-decoration: none;
+}
+
+a:visited{
+    text-decoration: slateblue;
+}
