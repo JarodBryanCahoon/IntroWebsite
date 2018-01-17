@@ -2,6 +2,7 @@ body{
     padding: 1%;
     margin: 2%;
     background: rgba(32, 81, 19, .45);
+    font-family: 'Source Sans Pro';
 }
 
 body h3{
