@@ -8,10 +8,10 @@
     list-style-type: none;
 }
 
-.footer{
+#footerlist{
+    text-align: center;
     list-style-type: none;
     display: inline-block;
-    text-align: center;
 }
 
 html{
@@ -50,12 +50,14 @@ image{
 }
 
 
-a{
-    text-decoration:black;
-    text-shadow: none;
+a:link{
+    text-decoration: none;
+    text-shadow: 1px 1px 2px white;
+    color: rgb(48, 6, 43);
 }
 
-a:visited{
-    text-decoration: maroon;
-    text-shadow: none;
+a:hover, a:active, a:visited{
+    text-decoration: none;
+    text-shadow: 1px 1px 2px white;
+    color: rgb(48, 6, 43);
 }
