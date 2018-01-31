@@ -133,9 +133,7 @@ footer a:link, footer a:visited {
 .sidebar li a:visited {
     color: greenyellow;
 }
-.sidebar .zen-resources div:hover{
-    zoom: 20%;
-}
+
 .explanation{
     background-color: darkslategrey;
     border-color: black;

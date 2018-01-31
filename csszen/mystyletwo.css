@@ -8,7 +8,6 @@ body{
 
 .intro h1{
     color: midnightblue;
-    border-color: #9685BA;
     background-color: #9685BA;
     border-style: solid;
     font-family: Castellar;
@@ -18,7 +17,6 @@ body{
 .intro h2{
     color: black;
     border-style: solid;
-    border-color: lightgray;
     background-color: lightgray;
     border-radius: 20%;
 }
@@ -29,7 +27,6 @@ body{
     border-color: black;
 }
 .explanation h3{
-    text-color: midnightblue;
     text-shadow: 1px 1px black;
     text-align: right;
 }
@@ -44,7 +41,6 @@ body{
     border-color: black;
 }
 .participation h3{
-    text-color: midnightblue;
     text-shadow: 1px 1px black;
     text-align: right;
 }
@@ -66,7 +62,6 @@ body{
 }
 .benefits h3{
     text-align: right;
-    text-color: midnightblue;
     text-shadow: 1px 1px black;
 }
 
@@ -81,7 +76,6 @@ body{
 }
 .requirements h3{
     text-align: right;
-    text-color: midnightblue;
     text-shadow: 1px 1px black;
 }
 
