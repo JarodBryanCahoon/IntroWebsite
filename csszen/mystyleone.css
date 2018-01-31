@@ -49,6 +49,7 @@ abbr {
     min-width: 470px;
     width: 40%;
     background: rgba(155, 31, 141, .7);
+    text-align: center;
 }
 .intro h1{
     font-family: Bahnschrift;
