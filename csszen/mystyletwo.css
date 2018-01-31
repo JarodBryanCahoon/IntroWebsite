@@ -5,7 +5,9 @@ body{
     border-color: #9685BA;
     text-align: center;
 }
-
+/*
+This is for the first main heading
+ */
 .intro h1{
     color: midnightblue;
     background-color: #9685BA;
@@ -14,6 +16,9 @@ body{
     border-radius: 30%;
 }
 
+/*
+This is for the second main heading
+ */
 .intro h2{
     color: black;
     border-style: solid;
@@ -21,40 +26,63 @@ body{
     border-radius: 20%;
 }
 
+/*
+These next few are just adding borders around each section
+ */
 .explanation{
     padding: 3px;
     border-style: solid;
     border-color: black;
 }
+/*
+Adds shadow to the text to make it look cool
+ */
 .explanation h3{
     text-shadow: 1px 1px black;
     text-align: right;
 }
-
+/*
+Keeps the text aligned right
+ */
 .explanation p{
     text-align: right;
 }
 
+/*
+Border
+ */
 .participation{
     padding: 3px;
     border-style: solid;
     border-color: black;
 }
+/*
+Sweet ass shadow
+ */
 .participation h3{
     text-shadow: 1px 1px black;
     text-align: right;
 }
 
+/*
+Stay right
+ */
 .participation p{
     text-align: right;
 }
 
+/*
+Add border
+ */
 .participation{
     padding: 3px;
     border-style: solid;
     border-color: black;
 }
 
+/*
+Pmuch same as above
+ */
 .benefits{
     padding: 3px;
     border-color: black;
@@ -87,6 +115,9 @@ body{
     text-align: center;
 }
 
+/*
+Trying to get all of the elements of the resources in a line
+ */
 .zen-resources ul{
     display: flex;
     flex-direction: row;
@@ -94,6 +125,10 @@ body{
     text-align: center;
 }
 
+/*
+Sets a margin between each element
+and adds color so they can be differentiated
+ */
 .zen-resources li{
     margin: 1px;
     padding: 1px;
@@ -105,6 +140,9 @@ body{
     text-align: left;
 }
 
+/*
+Makes these in a column
+ */
 .design-archives ul{
     display: flex;
     list-style: none;
@@ -133,6 +171,9 @@ body{
     text-color: purple;
 }
 
+/*
+Tries to make these into a column as well
+ */
 .design-selection ul{
     list-style-type: none;
     display: flex;

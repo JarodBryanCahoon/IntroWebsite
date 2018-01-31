@@ -2,6 +2,9 @@ html {
     margin: 0;
     padding: 0;
 }
+/*
+Changes some of the stuff for the main body
+ */
 body {
     font: 75% georgia, sans-serif;
     line-height: 2;
@@ -11,6 +14,9 @@ body {
     padding: 3%;
 }
 
+/*
+Standardizes all of the h3s to be ugly and in comic sans
+ */
 h3 {
     font-family: "Comic Sans MS";
     font-weight: bolder;
@@ -18,26 +24,41 @@ h3 {
     margin-bottom: 5px;
     color: black;
 }
+/*
+Makes the links hella ugly
+ */
 a:link {
     font-weight: bold;
     text-decoration: none;
     color: greenyellow;
     background: #0d4b0c;
 }
+/*
+Changes the links while keeping them hella ugly
+ */
 a:visited {
     font-weight: bold;
     text-decoration: blink;
     color: #D4CDDC;
 }
+
+/*
+Underlines stuff you are sitting on
+ */
 a:hover, a:focus, a:active {
     text-decoration: underline;
     color: fuchsia;
 }
+/*
+Lets you know what is an abbreviation and hwat is not an abbreviation
+ */
 abbr {
     border-bottom: dashed;
     background: border-box;
 }
-/* specific divs */
+/*
+Makes the page wrapper a solid color and places it up to the right
+ */
 .page-wrapper {
     background:#c21d25 repeat-x bottom center;
     padding: 0 175px 0 110px;
@@ -45,6 +66,9 @@ abbr {
     position: relative;
 }
 
+/*
+Sets the location of the intro
+ */
 .intro {
     min-width: 470px;
     width: 40%;
@@ -58,6 +82,9 @@ abbr {
     float: right;
 }
 
+/*
+Randomly makes this stuff uppercase
+ */
 .intro h1:hover{
     text-transform: uppercase;
 }
@@ -68,6 +95,9 @@ abbr {
 
 }
 
+/*
+Forces the summary into the left and a thin column
+ */
 .summary {
     width: 160px;
     float: left;
@@ -78,20 +108,32 @@ abbr {
     padding: 0px 10px 0 10px;
     border-color: #988F5E;
 }
+/*
+Adds padding left so stuff is seperated
+ */
 .supporting {
     padding-left: 10px;
     margin-bottom: 40px;
     margin-top: 30px;
 }
 
+/*
+I just wanted this centered
+ */
 footer {
     text-align: center;
 }
 
+/*
+Keeps these seperated
+ */
 footer a:link, footer a:visited {
     margin-right: 20px;
 }
 
+/*
+Pushes the sidebar to the bottom of the screen
+ */
 .sidebar {
     margin-top: 800px;
     margin-left: 600px;
@@ -102,7 +144,9 @@ footer a:link, footer a:visited {
     right: 0;
 }
 
-
+/*
+Changes the color on hover
+ */
 .sidebar div:hover{
     background-color: #0d4b0c;
 }
@@ -122,6 +166,11 @@ footer a:link, footer a:visited {
     margin-bottom: 3%;
     list-style-type: georgian;
 }
+/*
+Pretty much everythin here is to make the elements appear side by side
+I wasn't trying to make everything fit well, I just wanted the paragraphs beside
+each other
+ */
 #zen-supporting{
    display: flex;
     flex-direction: row;
@@ -159,6 +208,9 @@ footer a:link, footer a:visited {
     background-color: olive;
     width: 15%;
 }
+/*
+adds a dank ass real zen garden to the top
+ */
 .extra1 {
     background: transparent url(https://static.pexels.com/photos/326162/pexels-photo-326162.jpeg) top left no-repeat;
     position: absolute;
