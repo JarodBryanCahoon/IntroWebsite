@@ -57,9 +57,14 @@ abbr {
     float: right;
 }
 
+.intro h1:hover{
+    text-transform: uppercase;
+}
+
 .intro h2{
     font-family: Broadway;
-    font-size: 500%
+    font-size: 500%;
+
 }
 
 .summary {
@@ -70,6 +75,7 @@ abbr {
 .preamble {
     clear: right;
     padding: 0px 10px 0 10px;
+    border-color: #988F5E;
 }
 .supporting {
     padding-left: 10px;
@@ -80,12 +86,13 @@ abbr {
 footer {
     text-align: center;
 }
+
 footer a:link, footer a:visited {
     margin-right: 20px;
 }
 
 .sidebar {
-    margin-top: 55%;
+    margin-top: 800px;
     margin-left: 600px;
     position: absolute;
     float: left;
@@ -93,6 +100,7 @@ footer a:link, footer a:visited {
     top: 0;
     right: 0;
 }
+
 
 .sidebar div:hover{
     background-color: #0d4b0c;
@@ -113,6 +121,11 @@ footer a:link, footer a:visited {
     margin-bottom: 3%;
     list-style-type: georgian;
 }
+#zen-supporting{
+   display: flex;
+    flex-direction: row;
+}
+
 .sidebar li a:link {
     color: lightgreen;
 }
@@ -125,21 +138,27 @@ footer a:link, footer a:visited {
 .explanation{
     background-color: darkslategrey;
     border-color: black;
+    width: 15%;
+    height: 60%
 }
 
 .participation{
     background-color: #9685BA;
     border-color: black;
+    left-margin: 5%;
+    width: 15%;
 }
 .benefits{
     font-kerning: normal;
     border-color: black;
     background-color: chocolate;
+    width: 15%;
 }
 
 .requirements{
     background-position: center;
     background-color: olive;
+    width: 15%;
 }
 .extra1 {
     background: transparent url(https://static.pexels.com/photos/326162/pexels-photo-326162.jpeg) top left no-repeat;
@@ -148,6 +167,6 @@ footer a:link, footer a:visited {
     float: left;
     top: 10px;
     right: 10px;
-    width: 30%;
+    width: 15%;
     height: 30%;
 }
