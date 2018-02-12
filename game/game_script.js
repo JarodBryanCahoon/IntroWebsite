@@ -4,7 +4,7 @@
 // frames per second to run game
 var FPS = 50;
 // color for everything
-var COLOR = '#0095DD';
+var COLOR = '#000000';
 // ball specific values
 var BALL_IMAGE = 'images/ball.gif';
 var BALL_SPEED = 4;
@@ -13,6 +13,11 @@ var BALL_SIZE = 15;
 var PADDLE_SOUND = 'sounds/pong_beep.wav';
 var PADDLE_SPEED = 5;
 var PADDLE_SIZE = 10;
+var STARTING_LIVES = 5;
+// Brick Specific Stuff
+var BRICK_WIDTH = 10;
+var BRICK_HEIGHT = 5;
+var BRICK_COLOR = '#db5727';
 
 
 /*
@@ -75,8 +80,8 @@ class ResourceManager {
 class InputManager {
     constructor (canvas) {
         this.canvas = canvas;
-        this.upPressed = false;
-        this.downPressed = false;
+        this.leftPressed = false;
+        this.rightPressed = false;
         this.mouseX = 0;
         this.mouseY = 0;
     }
@@ -102,6 +107,11 @@ class InputManager {
         else if (e.keyCode == 40) {
             this.downPressed = true;
         }
+        else if(e.keyCode == 13 && looper.getState() == splash){
+            console.log("the switch is being called!");
+            splash.remove();
+            looper.setState(game);
+        }
     }
 
     keyUpHandler (e) {
@@ -113,16 +123,6 @@ class InputManager {
         }
     }
 
-    // get the mouse coordinates relative to the canvas rather than the page
-    mouseMoveHandler (e) {
-        this.mouseX = e.clientX - this.canvas.offsetLeft;
-        this.mouseY = e.clientY - this.canvas.offsetTop;
-    }
-
-    mouseInBounds () {
-        return this.mouseX > 0 && this.mouseX < this.canvas.width &&
-            this.mouseY > 0 && this.mouseY < this.canvas.height;
-    }
 }
 
 
@@ -209,6 +209,35 @@ class Sprite {
     draw (ctx) {
     }
 }
+class Brick{
+    constructor (x, y, c){
+       this.xPos = x;
+       this.yPos = y;
+       this.w = BRICK_WIDTH;
+       this.h = BRICK_HEIGHT;
+       this.canvas = c;
+       this.ctx = this.canvas.getContext('2d');
+    }
+
+    getWidth(){
+        return this.w;
+    }
+
+    getHeight(){
+        return this.h;
+    }
+
+    draw(){
+        this.ctx.fillStyle = BRICK_COLOR;
+        this.ctx.fillRect(this.xPos, this.yPos, this.w, this.h);
+    }
+
+    remove(){
+        this.ctx.clearRect(this.xPos, this.yPos, this.w, this.h);
+    }
+
+
+}
 
 class Ball extends Sprite {
     constructor (image, x, y, size, dx, dy) {
@@ -264,38 +293,84 @@ class Paddle extends Sprite {
     }
 }
 
-class Score extends Sprite {
-    constructor (x, y) {
-        super(x, y, 0, 0, 0, 0);
-        this.score = 0;
-        this.hiScore = 0;
+class LiveCount{
+    constructor (c){
+        this.canvas = c;
+        this.ctx = this.canvas.getContext('2d');
+        this.lives = STARTING_LIVES;
     }
 
-    draw (ctx) {
-        // set features first, so they are active when the text is drawn
-        ctx.font = '16px Arial';
-        ctx.fillStyle = COLOR;
-        ctx.fillText('Score: ' + this.score, this.x, this.y);
-        ctx.fillText('Hi Score: ' + this.hiScore, this.x + 90, this.y);
+    changeLives(arg){
+        if(arg){
+            decrementLives();
+        } else{
+            incrementLives();
+        }
     }
 
-    reset () {
-        this.score = 0;
+    decrementLives(){
+        this.lives--;
     }
 
-    increment () {
-        this.score += 1;
-        if (this.score > this.hiScore) {
-            this.hiScore = this.score;
+    incrementLives(){
+        this.lives++;
+    }
+    checkLives(){
+        if(this.lives == 0){
+            //Need to go to loss screen
         }
     }
 }
 
+class Splash{
+    constructor (canvas) {
+        this.canvas = canvas;
+        this.ctx = this.canvas.getContext('2d');
+    }
 
+    draw(ctx){
+        ctx.font = '16px Comic Sans';
+        ctx.fillStyle = COLOR;
+        ctx.fillText("Hello, welcome to my game!", 50, 50);
+        ctx.fillText("To beat this game, destroy all of the blocks!", 50, 100);
+        ctx.fillText("If you lose all of your lives, you lose!");
+        ctx.fillText("Press the left and right arrows to move the paddle!", 50, 200);
+    }
+
+    loop(){
+        this.draw(this.ctx);
+    }
+
+    remove(){
+        this.ctx.clearRect(0,0,this.canvas.width, this.canvas.height);
+        console.log("Splash has been removed");
+    }
+}
+
+class LoopManager{
+    constructor(initial){
+        this.state = initial;
+    }
+
+    loop(){
+       this.state.loop();
+    }
+
+    getState(){
+        return this.state;
+    }
+
+    setState(newState){
+        this.state = newState;
+    }
+}
 /*
  * Game class contains everything about the game and displays in a given canvas
  */
 class Game {
+    var levels = [new Level(3,1,2), new Level(3,3,3), new Level(4,2,2)];
+    var index = 0;
+    var currentBricks = 
     constructor (canvas) {
         // the area in the HTML document where the game will be played
         this.canvas = canvas;
@@ -308,7 +383,6 @@ class Game {
             BALL_SPEED, -BALL_SPEED);
         this.paddle = new Paddle(this.canvas.width - PADDLE_SIZE * 3, (this.canvas.height - PADDLE_SIZE * 6) / 2,
             PADDLE_SIZE, PADDLE_SIZE * 6, 0, PADDLE_SPEED);
-        this.score = new Score(8, 20);
     }
 
     loop () {
@@ -329,9 +403,7 @@ class Game {
         this.ctx.clearRect(0, 0, this.canvas.width, this.canvas.height);
         this.ball.draw(this.ctx);
         this.paddle.draw(this.ctx);
-        this.score.draw(this.ctx);
     }
-
 
     checkCollisions() {
         if (this.ball.nextY > this.canvas.height - this.ball.size || this.ball.nextY < 0) {
@@ -354,6 +426,35 @@ class Game {
     }
 }
 
+class Level{
+    var brickList;
+    constructor(number, rows, cols, canvas){
+        this.bricknum = number;
+        this.rows = rows;
+        this.columns = cols;
+        this.canvas = canvas;
+    }
+
+    initialize(){
+        for(i = 0; i < rows; i ++){
+            for(j = 0; j < cols; j++){
+                if(brickList.length < number){
+                    brickList.push(new Brick(i*))
+                }
+            }
+        }
+    }
+
+    removeBrick(brick){
+        brick.remove();
+        var index = brickList.indexOf(brick);
+        bricklist.splice(index,1);
+    }
+
+    getBricks(){
+        return this.brickList;
+    }
+}
 
 /*
  * Setup classes
@@ -361,7 +462,9 @@ class Game {
 var canvas = document.getElementById('gameCanvas');
 var resources = new ResourceManager();
 var input = new InputManager(canvas);
+var splash = new Splash(canvas);
 var game = new Game(canvas);
+var looper = new LoopManager(splash);
 
 /*
  * Setup input responses
@@ -376,5 +479,6 @@ document.addEventListener('mousemove', event => input.mouseMoveHandler(event), f
  */
 // NOT IDEAL --- just starts when the everthing is done loading, not necessarily when the user is ready
 setInterval(function() {
-    game.loop();
+    console.log("Loop is being called");
+    looper.loop();
 }, 1000/FPS);

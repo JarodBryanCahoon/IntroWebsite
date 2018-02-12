@@ -1,0 +1,14 @@
+body {
+    background-color: wheat;
+}
+
+h1 {
+    text-align: center;
+}
+
+canvas {
+    border-style: solid;
+    border-color: black;
+    display: block;
+    margin: 0 auto;
+}
